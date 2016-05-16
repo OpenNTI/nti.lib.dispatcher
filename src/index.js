@@ -53,4 +53,10 @@ class AppDispatcher extends Dispatcher {
 
 }
 
-export default new AppDispatcher();
+const singleton = new AppDispatcher();
+export default singleton;
+
+export function dispatch (type, response) {
+	singleton.handleRequestAction({ type, response });
+	return response;
+}
