@@ -1,0 +1,6 @@
+{
+	"extends": [
+		"nti-codestyle-js"
+	],
+	"parser": "babel-eslint"
+}
