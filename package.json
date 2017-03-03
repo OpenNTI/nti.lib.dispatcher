@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://repos.nextthought.com/git/nti.lib.dispatcher"
+    "url": "https://github.com/NextThought/nti.lib.dispatcher.git"
   },
   "keywords": [
     "ntiids"
