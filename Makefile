@@ -1,10 +1,6 @@
-.PHONY:
-	clean \
-	check \
-	test
+.PHONY: clean check test
 
-SRC = $(shell find src -name '*.js')
-LIB = $(SRC:src/%.js=lib/%.js)
+REPORTSDIR = reports
 LIBDIR = lib
 
 all: node_modules lib
@@ -16,14 +12,12 @@ node_modules: package.json
 check:
 	@eslint --ext .js,.jsx ./src
 
-test: node_modules check
-	@karma start --single-run
+test: clean node_modules check
+	@jest
 
 clean:
 	@rm -rf $(LIBDIR)
+	@rm -rf $(REPORTSDIR)
 
-lib: $(LIB)
-lib/%.js: src/%.js
-#	@echo babel	$@...
-	@mkdir -p $(@D)
-	babel $< -o $@
+lib: clean
+	@NODE_ENV=rollup rollup -c
