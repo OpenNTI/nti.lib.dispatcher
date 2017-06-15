@@ -7,9 +7,13 @@
     "lib"
   ],
   "scripts": {
-    "test": "make test",
-    "start": "make check",
-    "prepublish": "not-in-install && make || in-install"
+    "test": "nti-lib-scripts test",
+    "start": "nti-lib-scripts test --watch",
+    "prepack": "nti-lib-scripts build",
+    "build": "nti-lib-scripts build",
+    "clean": "nti-lib-scripts clean",
+    "check": "nti-lib-scripts check",
+    "release": "nti-lib-scripts release"
   },
   "repository": {
     "type": "git",
@@ -25,35 +29,6 @@
     "invariant": "^2.1.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.1.0",
-    "babel-eslint": "^7.0.0",
-    "babel-jest": "^19.0.0",
-    "babel-plugin-external-helpers": "^6.8.0",
-    "babel-polyfill": "^6.1.0",
-    "babel-preset-env": "^1.1.4",
-    "babel-preset-stage-1": "^6.1.0",
-    "eslint-config-nti-codestyle-js": "^1.1.0",
-    "in-publish": "^2.0.0",
-    "jest-junit": "^1.4.0",
-    "jest": "^19.0.2",
-    "nti-unittesting-clientside": "^1.0.3",
-    "rollup": "^0.41.6",
-    "rollup-plugin-babel": "^2.6.1",
-    "rollup-plugin-commonjs": "^8.0.2",
-    "rollup-plugin-json": "^2.0.1"
-  },
-  "jest": {
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}",
-      "!**/*.spec.js"
-    ],
-    "coverageDirectory": "reports/coverage",
-    "coverageReporters": ["text", "lcov", "cobertura"],
-    "roots": ["<rootDir>/src/"],
-    "testResultsProcessor": "./node_modules/jest-junit"
-  },
-  "jest-junit": {
-    "output": "reports/test-results/index.xml"
+    "nti-lib-scripts": "^1.0.6"
   }
 }
