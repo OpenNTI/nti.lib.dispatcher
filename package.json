@@ -13,7 +13,8 @@
     "build": "nti-lib-scripts build",
     "clean": "nti-lib-scripts clean",
     "check": "nti-lib-scripts check",
-    "release": "nti-lib-scripts release"
+    "release": "nti-lib-scripts release",
+    "install-snapshots": "nti-lib-scripts install-snapshots"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,6 @@
     "invariant": "^2.1.0"
   },
   "devDependencies": {
-    "nti-lib-scripts": "^1.0.10"
+    "nti-lib-scripts": "^1.0.34"
   }
 }
