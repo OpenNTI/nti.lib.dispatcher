@@ -7,14 +7,14 @@
     "lib"
   ],
   "scripts": {
-    "test": "nti-lib-scripts test",
-    "start": "nti-lib-scripts test --watch",
-    "prepack": "nti-lib-scripts build",
-    "build": "nti-lib-scripts build",
-    "clean": "nti-lib-scripts clean",
-    "check": "nti-lib-scripts check",
-    "release": "nti-lib-scripts release",
-    "install-snapshots": "nti-lib-scripts install-snapshots"
+    "test": "lib-scripts test",
+    "start": "lib-scripts test --watch",
+    "prepack": "lib-scripts build",
+    "build": "lib-scripts build",
+    "clean": "lib-scripts clean",
+    "check": "lib-scripts check",
+    "release": "lib-scripts release",
+    "install-snapshots": "lib-scripts install-snapshots"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,6 @@
     "invariant": "^2.1.0"
   },
   "devDependencies": {
-    "nti-lib-scripts": "^1.0.36"
+    "@nti/lib-scripts": "^1.16.0"
   }
 }
