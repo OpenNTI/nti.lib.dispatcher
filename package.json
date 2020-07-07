@@ -2,21 +2,18 @@
   "name": "@nti/lib-dispatcher",
   "version": "1.4.0-alpha",
   "description": "Flux dispatcher implementation",
-  "main": "lib/index.js",
+  "main": ".index.js",
   "module": "src/index.js",
   "files": [
-    "lib",
+    ".index.js",
     "src"
   ],
   "scripts": {
     "test": "lib-scripts test",
     "start": "lib-scripts test --watch",
-    "prepack": "lib-scripts build",
-    "build": "lib-scripts build",
     "clean": "lib-scripts clean",
     "check": "lib-scripts check",
-    "release": "lib-scripts release",
-    "install-snapshots": "lib-scripts install-snapshots"
+    "release": "lib-scripts release"
   },
   "repository": {
     "type": "git",
@@ -32,7 +29,8 @@
   "license": "UNLICENSED",
   "dependencies": {
     "flux": "^3.0.0",
-    "invariant": "^2.1.0"
+    "invariant": "^2.1.0",
+    "esm": "^3.2.25"
   },
   "devDependencies": {
     "@nti/lib-scripts": "^2.0.0"
