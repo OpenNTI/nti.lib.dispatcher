@@ -1,5 +1,6 @@
-import {Dispatcher} from 'flux';
 import invariant from 'invariant';
+
+import Dispatcher from './Dispatcher';
 
 class AppDispatcher extends Dispatcher {
 

@@ -28,7 +28,6 @@
   "author": "nextthought",
   "license": "UNLICENSED",
   "dependencies": {
-    "flux": "^3.0.0",
     "invariant": "^2.1.0",
     "esm": "^3.2.25"
   },
