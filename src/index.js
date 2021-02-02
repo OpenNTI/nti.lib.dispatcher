@@ -12,7 +12,7 @@ class AppDispatcher extends Dispatcher {
 	/**
 	 * A bridge function between the views and the dispatcher, marking the action
 	 * as a view action.
-	 * @param  {object} action The data coming from the view.
+	 * @param  {Object} action The data coming from the view.
 	 * @returns {void}
 	 */
 	handleViewAction (action) {
@@ -31,7 +31,7 @@ class AppDispatcher extends Dispatcher {
 	/**
 	 * A bridge function between the views and the dispatcher, marking the action
 	 * as a request action.
-	 * @param  {object} action The data coming from the request response.
+	 * @param  {Object} action The data coming from the request response.
 	 * @returns {void}
 	 */
 	handleRequestAction (action) {
