@@ -46,7 +46,7 @@ describe('Dispatcher', () => {
 	test('should wait for callbacks registered earlier', () => {
 		let tokenA = dispatcher.register(callbackA);
 
-		dispatcher.register((payload) => {
+		dispatcher.register(payload => {
 			dispatcher.waitFor([tokenA]);
 			expect(callbackA.mock.calls.length).toBe(1);
 			expect(callbackA.mock.calls[0][0]).toBe(payload);
@@ -65,7 +65,7 @@ describe('Dispatcher', () => {
 
 	test('should wait for callbacks registered later', () => {
 		let tokenB;
-		dispatcher.register((payload) => {
+		dispatcher.register(payload => {
 			dispatcher.waitFor([tokenB]);
 			expect(callbackB.mock.calls.length).toBe(1);
 			expect(callbackB.mock.calls[0][0]).toBe(payload);
@@ -85,7 +85,7 @@ describe('Dispatcher', () => {
 	});
 
 	test('should throw if dispatch() while dispatching', () => {
-		dispatcher.register((payload) => {
+		dispatcher.register(payload => {
 			dispatcher.dispatch(payload);
 			callbackA();
 		});
@@ -114,7 +114,7 @@ describe('Dispatcher', () => {
 	});
 
 	test('should throw on self-circular dependencies', () => {
-		let tokenA = dispatcher.register((payload) => {
+		let tokenA = dispatcher.register(payload => {
 			dispatcher.waitFor([tokenA]);
 			callbackA(payload);
 		});
@@ -126,12 +126,12 @@ describe('Dispatcher', () => {
 
 	test('should throw on multi-circular dependencies', () => {
 		let tokenB;
-		let tokenA = dispatcher.register((payload) => {
+		let tokenA = dispatcher.register(payload => {
 			dispatcher.waitFor([tokenB]);
 			callbackA(payload);
 		});
 
-		tokenB = dispatcher.register((payload) => {
+		tokenB = dispatcher.register(payload => {
 			dispatcher.waitFor([tokenA]);
 			callbackB(payload);
 		});
@@ -143,19 +143,19 @@ describe('Dispatcher', () => {
 
 	test('should remain in a consistent state after a failed dispatch', () => {
 		dispatcher.register(callbackA);
-		dispatcher.register((payload) => {
+		dispatcher.register(payload => {
 			if (payload.shouldThrow) {
 				throw new Error();
 			}
 			callbackB();
 		});
 
-		expect(() => dispatcher.dispatch({shouldThrow: true})).toThrow();
+		expect(() => dispatcher.dispatch({ shouldThrow: true })).toThrow();
 
 		// Cannot make assumptions about a failed dispatch.
 		let callbackACount = callbackA.mock.calls.length;
 
-		dispatcher.dispatch({shouldThrow: false});
+		dispatcher.dispatch({ shouldThrow: false });
 
 		expect(callbackA.mock.calls.length).toBe(callbackACount + 1);
 		expect(callbackB.mock.calls.length).toBe(1);

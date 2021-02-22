@@ -9,7 +9,6 @@
  * Source: https://github.com/facebook/flux/blob/39064d9ce4a80f860bec20baf90170e4b9bf35bc/src/Dispatcher.js
  */
 
-
 import invariant from 'invariant';
 
 /** @typedef {string} DispatchToken */
@@ -120,7 +119,7 @@ export default class Dispatcher {
 	/** @type {TPayload} */
 	_pendingPayload;
 
-	constructor () {
+	constructor() {
 		this._callbacks = {};
 		this._isDispatching = false;
 		this._isHandled = {};
@@ -129,23 +128,23 @@ export default class Dispatcher {
 	}
 
 	/**
-     * Registers a callback to be invoked with every dispatched payload. Returns
-     * a token that can be used with `waitFor()`.
-     * @param {Callback} callback -
-     * @returns {DispatchToken} -
-     */
-	register (callback) {
+	 * Registers a callback to be invoked with every dispatched payload. Returns
+	 * a token that can be used with `waitFor()`.
+	 * @param {Callback} callback -
+	 * @returns {DispatchToken} -
+	 */
+	register(callback) {
 		const id = _prefix + this._lastID++;
 		this._callbacks[id] = callback;
 		return id;
 	}
 
 	/**
-     * Removes a callback based on its token.
-     * @param {DispatchToken} id -
-     * @returns {void}
-     */
-	unregister (id) {
+	 * Removes a callback based on its token.
+	 * @param {DispatchToken} id -
+	 * @returns {void}
+	 */
+	unregister(id) {
 		invariant(
 			this._callbacks[id],
 			'Dispatcher.unregister(...): `%s` does not map to a registered callback.',
@@ -155,13 +154,13 @@ export default class Dispatcher {
 	}
 
 	/**
-     * Waits for the callbacks specified to be invoked before continuing execution
-     * of the current callback. This method should only be used by a callback in
-     * response to a dispatched payload.
-     * @param {DispatchToken[]} ids -
-     * @returns {void}
-     */
-	waitFor (ids) {
+	 * Waits for the callbacks specified to be invoked before continuing execution
+	 * of the current callback. This method should only be used by a callback in
+	 * response to a dispatched payload.
+	 * @param {DispatchToken[]} ids -
+	 * @returns {void}
+	 */
+	waitFor(ids) {
 		invariant(
 			this._isDispatching,
 			'Dispatcher.waitFor(...): Must be invoked while dispatching.'
@@ -172,7 +171,7 @@ export default class Dispatcher {
 				invariant(
 					this._isHandled[id],
 					'Dispatcher.waitFor(...): Circular dependency detected while ' +
-				'waiting for `%s`.',
+						'waiting for `%s`.',
 					id
 				);
 				continue;
@@ -187,11 +186,11 @@ export default class Dispatcher {
 	}
 
 	/**
-     * Dispatches a payload to all registered callbacks.
-     * @param {TPayload} payload -
-     * @returns {void}
-     */
-	dispatch (payload) {
+	 * Dispatches a payload to all registered callbacks.
+	 * @param {TPayload} payload -
+	 * @returns {void}
+	 */
+	dispatch(payload) {
 		invariant(
 			!this._isDispatching,
 			'Dispatch.dispatch(...): Cannot dispatch in the middle of a dispatch.'
@@ -210,34 +209,34 @@ export default class Dispatcher {
 	}
 
 	/**
-     * @returns {boolean} Is this Dispatcher currently dispatching.
-     */
-	isDispatching () {
+	 * @returns {boolean} Is this Dispatcher currently dispatching.
+	 */
+	isDispatching() {
 		return this._isDispatching;
 	}
 
 	/**
-     * Call the callback stored with the given id. Also do some internal
-     * bookkeeping.
-     *
-     * @internal
-     * @param {DispatchToken} id -
-     * @returns {void}
-     */
-	_invokeCallback (id) {
+	 * Call the callback stored with the given id. Also do some internal
+	 * bookkeeping.
+	 *
+	 * @internal
+	 * @param {DispatchToken} id -
+	 * @returns {void}
+	 */
+	_invokeCallback(id) {
 		this._isPending[id] = true;
 		this._callbacks[id](this._pendingPayload);
 		this._isHandled[id] = true;
 	}
 
 	/**
-     * Set up bookkeeping needed when dispatching.
-     *
-     * @internal
-     * @param {TPayload} payload -
-     * @returns {void}
-     */
-	_startDispatching (payload) {
+	 * Set up bookkeeping needed when dispatching.
+	 *
+	 * @internal
+	 * @param {TPayload} payload -
+	 * @returns {void}
+	 */
+	_startDispatching(payload) {
 		// eslint-disable-next-line guard-for-in
 		for (const id in this._callbacks) {
 			this._isPending[id] = false;
@@ -248,14 +247,13 @@ export default class Dispatcher {
 	}
 
 	/**
-     * Clear bookkeeping used for dispatching.
-     *
-     * @internal
-     * @returns {void}
-     */
-	_stopDispatching () {
+	 * Clear bookkeeping used for dispatching.
+	 *
+	 * @internal
+	 * @returns {void}
+	 */
+	_stopDispatching() {
 		delete this._pendingPayload;
 		this._isDispatching = false;
 	}
 }
-
