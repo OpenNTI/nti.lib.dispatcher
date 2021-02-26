@@ -1,6 +1,6 @@
 {
   "name": "@nti/lib-dispatcher",
-  "version": "1.6.0",
+  "version": "1.7.0-alpha",
   "description": "Flux dispatcher implementation",
   "main": ".index.js",
   "module": "src/index.js",
