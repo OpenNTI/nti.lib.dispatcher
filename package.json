@@ -2,12 +2,7 @@
   "name": "@nti/lib-dispatcher",
   "version": "1.7.0-alpha",
   "description": "Flux dispatcher implementation",
-  "main": ".index.js",
-  "module": "src/index.js",
-  "files": [
-    ".index.js",
-    "src"
-  ],
+  "main": "src/index.js",
   "scripts": {
     "test": "lib-scripts test",
     "start": "lib-scripts test --watch",
@@ -28,8 +23,7 @@
   "author": "nextthought",
   "license": "UNLICENSED",
   "dependencies": {
-    "invariant": "^2.1.0",
-    "esm": "^3.2.25"
+    "invariant": "^2.1.0"
   },
   "devDependencies": {
     "@nti/lib-scripts": "^2.0.0"
